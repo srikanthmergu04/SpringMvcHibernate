@@ -17,6 +17,40 @@ public class StudentDetails {
 	
 	@Column
 	private String sName;
+	
+	@Column
+	private int age;
+	
+	@Column
+	private String gender;
+	
+	@Column
+	private String dept;
+
+	
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getDept() {
+		return dept;
+	}
+
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
 
 	public int getId() {
 		return id;

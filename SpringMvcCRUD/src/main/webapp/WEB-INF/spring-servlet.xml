@@ -52,5 +52,12 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
     </bean>
     
     
+<bean id="service" class="com.srikanth.service.impl.StudentServiceImpl">    
+</bean>
+
+<bean id="dao" class="com.srikanth.dao.Impl.StudentDaoImpl">    
+</bean>  
+    
+    
 
 </beans>
