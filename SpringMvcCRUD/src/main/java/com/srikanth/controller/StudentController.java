@@ -31,31 +31,7 @@ public class StudentController {
 	{
 		model.addAttribute("student", new StudentDetails());
 		return "addStudent.jsp";
-		
-		/*
-		System.out.println("Hello");
-		System.out.println("Hello this is StudentController");
-		System.out.println("sessionFactory = "+sessionFactory);
-		StudentDetails student = new StudentDetails();
-		
-		student.setsName("Vinayak");
-		//student.setId(95);
-		System.out.println("session obj = "+sessionFactory.openSession());
-		Session session = null;
-		session = sessionFactory.openSession();
-		
-		Transaction trnx = session.beginTransaction();
-		
-		session.save(student);
-		
-		trnx.commit();
-		
-		*/
-		//m.addAttribute("student", new Student());
-		//System.out.println("JdbcTemplate = "+template);
-		//System.out.println("service in Student Controller = "+service);
-		//System.out.println("dao = "+dao);
-		//return "registerStudent.jsp";
+	
 		
 	}
 	
@@ -125,17 +101,15 @@ public class StudentController {
 		{
 			StudentDetails student = service.getStudentObject(primary);
 			
+			/*
 			
 			System.out.println(student.getId());
 			System.out.println(student.getsName());
 			System.out.println(student.getAge());
 			System.out.println(student.getGender());
 			System.out.println(student.getDept());
-			
+			*/
 			model.addAttribute("student", student);
-			
-			
-			
 			
 			return "updateStudentDetails.jsp";
 		}
@@ -155,15 +129,17 @@ public class StudentController {
    public String updateStudent(HttpServletRequest req , @ModelAttribute("student") StudentDetails student)
    {
 		int primary = Integer.parseInt(req.getParameter("id"));
-		System.out.println("primary id = "+primary);
+		
+		//System.out.println("primary id = "+primary);
 		student.setId(primary);
+		/*
 		System.out.println("id = "+student.getId());
 		System.out.println(student.getId());
 		System.out.println(student.getsName());
 		System.out.println(student.getAge());
 		System.out.println(student.getGender());
 		System.out.println(student.getDept());
-		
+		*/
 		service.updateStudent(student);
 		
 		

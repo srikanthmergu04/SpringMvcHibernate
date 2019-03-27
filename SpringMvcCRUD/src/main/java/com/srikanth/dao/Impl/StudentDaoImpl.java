@@ -20,9 +20,7 @@ public class StudentDaoImpl implements StudentDao {
 	@Autowired
     SessionFactory sessionFactory;
 	
-	
-	
-	
+	//Session se = null;
 	
 	public int addStudent(StudentDetails student) {
 		// TODO Auto-generated method stub
@@ -38,6 +36,8 @@ public class StudentDaoImpl implements StudentDao {
 		
 		trnx.commit();
 		
+		session.close();
+		
 		return 0;
 	}
 	public List<StudentDetails> listAllStudents() {
@@ -52,6 +52,10 @@ public class StudentDaoImpl implements StudentDao {
 		Query query = session.createQuery("from StudentDetails");
 		
 		list = query.list();
+		
+		session.flush();
+		session.close();
+		
 		
 		
 		
@@ -69,6 +73,9 @@ public class StudentDaoImpl implements StudentDao {
 		session.update(student);
 		
 		trnx.commit();
+		
+		session.flush();
+		session.close();
 	
 		
 		
@@ -88,6 +95,9 @@ public class StudentDaoImpl implements StudentDao {
 		session.delete(student);
 		
 		trnx.commit();
+		
+		session.flush();
+		session.close();
 		return 0;
 	}
 	public StudentDetails getStudentObject(int primary) {
@@ -97,6 +107,8 @@ public class StudentDaoImpl implements StudentDao {
 		session = sessionFactory.openSession();
 		
 		StudentDetails student = (StudentDetails) session.load(StudentDetails.class, primary);
+		session.flush();
+		//session.close();
 		return student;
 	}
 
