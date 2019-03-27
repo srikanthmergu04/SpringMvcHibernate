@@ -1,5 +1,8 @@
 package com.srikanth.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -66,6 +69,43 @@ public class StudentController {
 		
 		//userService.createUser(student);
 		return "redirect:/listStudents";
+	}
+	
+	@RequestMapping(value="/listStudents", method=RequestMethod.GET)
+	public String listStudents(Model model)
+	{
+		//ModelAndView model = new ModelAndView();
+		List<StudentDetails> student = new ArrayList();
+		
+		student = service.listAllStudents();
+		
+	//System.out.println("student in Controller = "+student);
+		
+		/*
+		for (StudentDetails stu : student) {
+			
+			System.out.println(stu.getId());
+			System.out.println(stu.getsName());
+			System.out.println(stu.getAge());
+			System.out.println(stu.getDept());
+			//System.out.println(stu.getCity());
+			
+			
+		}
+		*/
+		
+
+		/*
+		model.addObject("list", student);
+	
+		model.setViewName("listStudents.jsp");
+		*/
+		
+		model.addAttribute("list", student);
+		
+		
+		return "listStudents.jsp";
+		
 	}
 
 }
