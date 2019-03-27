@@ -2,9 +2,11 @@ package com.srikanth.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,7 +29,7 @@ public class StudentDetails {
 	@Column
 	private String dept;
 
-	
+	@OneToMany(fetch = FetchType.EAGER)
 	public int getAge() {
 		return age;
 	}
@@ -35,7 +37,8 @@ public class StudentDetails {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
+ 
+	@OneToMany(fetch = FetchType.EAGER)
 	public String getGender() {
 		return gender;
 	}
@@ -44,6 +47,7 @@ public class StudentDetails {
 		this.gender = gender;
 	}
 
+	@OneToMany(fetch = FetchType.EAGER)
 	public String getDept() {
 		return dept;
 	}
@@ -52,6 +56,7 @@ public class StudentDetails {
 		this.dept = dept;
 	}
 
+	@OneToMany(fetch = FetchType.EAGER)
 	public int getId() {
 		return id;
 	}
@@ -60,6 +65,7 @@ public class StudentDetails {
 		this.id = id;
 	}
 
+	@OneToMany(fetch = FetchType.EAGER)
 	public String getsName() {
 		return sName;
 	}
