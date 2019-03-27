@@ -37,4 +37,25 @@ public class StudentServiceImpl implements StudentService {
 		return list;
 	}
 
+	public int updateStudent(StudentDetails student) {
+		// TODO Auto-generated method stub
+		
+		dao.updateStudent(student);
+		return 0;
+	}
+
+	public int deleteStudent(int primary) {
+		// TODO Auto-generated method stub
+		
+		dao.deleteStudent(primary);
+		return 0;
+	}
+
+	public StudentDetails getStudentObject(int primary) {
+		// TODO Auto-generated method stub
+		
+		StudentDetails student = dao.getStudentObject(primary);
+		return student;
+	}
+
 }

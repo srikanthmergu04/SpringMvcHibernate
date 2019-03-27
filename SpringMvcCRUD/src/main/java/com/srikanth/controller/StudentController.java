@@ -3,6 +3,8 @@ package com.srikanth.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -107,5 +109,68 @@ public class StudentController {
 		return "listStudents.jsp";
 		
 	}
+	
+	@RequestMapping(value="/updateOrDelete", method=RequestMethod.POST)
+	public String updateOrDelete(HttpServletRequest req , Model model)
+	{
+		int primary = Integer.parseInt(req.getParameter("key"));
+		
+		String action =  req.getParameter("action");
+		
+		System.out.println("primary id = "+primary);
+		
+		System.out.println("Action = "+action);
+		
+		if(action.equals("update"))
+		{
+			StudentDetails student = service.getStudentObject(primary);
+			
+			
+			System.out.println(student.getId());
+			System.out.println(student.getsName());
+			System.out.println(student.getAge());
+			System.out.println(student.getGender());
+			System.out.println(student.getDept());
+			
+			model.addAttribute("student", student);
+			
+			
+			
+			
+			return "updateStudentDetails.jsp";
+		}
+		else
+		{
+			service.deleteStudent(primary);
+			return "redirect:/listStudents";
+		}
+		
+		
+		
+		
+	}
+	
+	
+	@RequestMapping(value="/updateStudent", method=RequestMethod.POST)
+   public String updateStudent(HttpServletRequest req , @ModelAttribute("student") StudentDetails student)
+   {
+		int primary = Integer.parseInt(req.getParameter("id"));
+		System.out.println("primary id = "+primary);
+		student.setId(primary);
+		System.out.println("id = "+student.getId());
+		System.out.println(student.getId());
+		System.out.println(student.getsName());
+		System.out.println(student.getAge());
+		System.out.println(student.getGender());
+		System.out.println(student.getDept());
+		
+		service.updateStudent(student);
+		
+		
+		return "redirect:/listStudents";
+	   
+   }
+	
+
 
 }

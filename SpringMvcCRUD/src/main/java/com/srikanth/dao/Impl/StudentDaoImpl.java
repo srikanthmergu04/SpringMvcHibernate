@@ -22,6 +22,8 @@ public class StudentDaoImpl implements StudentDao {
 	
 	
 	
+	
+	
 	public int addStudent(StudentDetails student) {
 		// TODO Auto-generated method stub
 		
@@ -55,6 +57,47 @@ public class StudentDaoImpl implements StudentDao {
 		
 		
 		return list;
+	}
+	public int updateStudent(StudentDetails student) {
+		// TODO Auto-generated method stub
+		
+		Session session = null;
+		session = sessionFactory.openSession();
+		
+		Transaction trnx = session.beginTransaction();
+		
+		session.update(student);
+		
+		trnx.commit();
+	
+		
+		
+		
+		return 0;
+	}
+	public int deleteStudent(int primary) {
+		// TODO Auto-generated method stub
+		
+		Session session = null;
+		session = sessionFactory.openSession();
+
+		Transaction trnx = session.beginTransaction();
+		
+		StudentDetails student =   (StudentDetails) session.load(StudentDetails.class, primary);
+		
+		session.delete(student);
+		
+		trnx.commit();
+		return 0;
+	}
+	public StudentDetails getStudentObject(int primary) {
+		// TODO Auto-generated method stub
+		
+		Session session = null;
+		session = sessionFactory.openSession();
+		
+		StudentDetails student = (StudentDetails) session.load(StudentDetails.class, primary);
+		return student;
 	}
 
 }
