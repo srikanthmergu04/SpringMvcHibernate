@@ -94,6 +94,15 @@
     <artifactId>jasperreports</artifactId>
     <version>6.4.0</version>
 </dependency>
+
+<!-- Log4J Dependency -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+
   </dependencies>
   <build>
     <finalName>SpringMvcCRUD</finalName>

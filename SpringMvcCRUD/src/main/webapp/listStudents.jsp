@@ -31,6 +31,8 @@
    </tr>  
    </c:forEach>  
    </table>
+   <br>
+   <br>
       <input type = "submit" name = "action" value = "update"> 
       <input type = "submit" name = "action" value = "delete"> 
    <br/>  
@@ -38,7 +40,7 @@
    <input type = "submit" value = "update">
     <form action = "deleteStudent">
    <input type = "submit" value = "delete"> -->
-   
+   <br><br>
    <a href="RegisterStudent">Add New Student</a> 
    
    </center>

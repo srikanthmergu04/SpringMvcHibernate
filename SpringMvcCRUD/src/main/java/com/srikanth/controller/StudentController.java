@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -26,10 +27,20 @@ public class StudentController {
 	@Autowired
 	StudentServiceImpl service;
 
+	private Logger logger = Logger.getLogger(StudentController.class);
+	
+	
+	
+
 	@RequestMapping("/RegisterStudent")
 	public String registerStudents(Model model)
 	{
+	
+		
 		model.addAttribute("student", new StudentDetails());
+		logger.debug("this is debuging");
+		logger.info("This Is An Info Log Entry ......!");
+		logger.error("This Is An Error Log Entry ......!");
 		return "addStudent.jsp";
 	
 		
@@ -38,13 +49,15 @@ public class StudentController {
 	@RequestMapping(value="/registerSuccess", method=RequestMethod.POST)
 	public String registerSuccess(@ModelAttribute("student") StudentDetails student) {
 		
+	
 		
 		System.out.println(student.getsName());
 		System.out.println(student.getDept());
 		System.out.println("StudentService obj = "+service);
 
 		service.addStudent(student);
-		
+		logger.info("This Is An Info Log Entry ......!");
+		logger.error("This Is An Error Log Entry ......!");
 		//userService.createUser(student);
 		return "redirect:/listStudents";
 	}
@@ -52,6 +65,7 @@ public class StudentController {
 	@RequestMapping(value="/listStudents", method=RequestMethod.GET)
 	public String listStudents(Model model)
 	{
+
 		//ModelAndView model = new ModelAndView();
 		List<StudentDetails> student = new ArrayList();
 		
@@ -81,7 +95,8 @@ public class StudentController {
 		
 		model.addAttribute("list", student);
 		
-		
+		logger.info("This Is An Info Log Entry ......!");
+		logger.error("This Is An Error Log Entry ......!");
 		return "listStudents.jsp";
 		
 	}
@@ -89,6 +104,7 @@ public class StudentController {
 	@RequestMapping(value="/updateOrDelete", method=RequestMethod.POST)
 	public String updateOrDelete(HttpServletRequest req , Model model)
 	{
+		
 		int primary = Integer.parseInt(req.getParameter("key"));
 		
 		String action =  req.getParameter("action");
@@ -110,12 +126,16 @@ public class StudentController {
 			System.out.println(student.getDept());
 			*/
 			model.addAttribute("student", student);
+			logger.info("This Is An Info Log Entry ......!");
+			logger.error("This Is An Error Log Entry ......!");
 			
 			return "updateStudentDetails.jsp";
 		}
 		else
 		{
 			service.deleteStudent(primary);
+			logger.info("This Is An Info Log Entry ......!");
+			logger.error("This Is An Error Log Entry ......!");
 			return "redirect:/listStudents";
 		}
 		
@@ -128,6 +148,8 @@ public class StudentController {
 	@RequestMapping(value="/updateStudent", method=RequestMethod.POST)
    public String updateStudent(HttpServletRequest req , @ModelAttribute("student") StudentDetails student)
    {
+		
+	
 		int primary = Integer.parseInt(req.getParameter("id"));
 		
 		//System.out.println("primary id = "+primary);
@@ -141,7 +163,8 @@ public class StudentController {
 		System.out.println(student.getDept());
 		*/
 		service.updateStudent(student);
-		
+		logger.info("This Is An Info Log Entry ......!");
+		logger.error("This Is An Error Log Entry ......!");
 		
 		return "redirect:/listStudents";
 	   
