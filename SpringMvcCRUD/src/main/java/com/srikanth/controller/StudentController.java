@@ -29,9 +29,6 @@ public class StudentController {
 
 	private Logger logger = Logger.getLogger(StudentController.class);
 	
-	
-	
-
 	@RequestMapping("/RegisterStudent")
 	public String registerStudents(Model model)
 	{
@@ -51,10 +48,11 @@ public class StudentController {
 		
 	
 		
-		System.out.println(student.getsName());
-		System.out.println(student.getDept());
-		System.out.println("StudentService obj = "+service);
-
+		/*
+		 * System.out.println(student.getsName());
+		 * System.out.println(student.getDept());
+		 * System.out.println("StudentService obj = "+service);
+		 */
 		service.addStudent(student);
 		logger.info("This Is An Info Log Entry ......!");
 		logger.error("This Is An Error Log Entry ......!");
@@ -109,9 +107,11 @@ public class StudentController {
 		
 		String action =  req.getParameter("action");
 		
-		System.out.println("primary id = "+primary);
-		
-		System.out.println("Action = "+action);
+		/*
+		 * System.out.println("primary id = "+primary);
+		 * 
+		 * System.out.println("Action = "+action);
+		 */
 		
 		if(action.equals("update"))
 		{

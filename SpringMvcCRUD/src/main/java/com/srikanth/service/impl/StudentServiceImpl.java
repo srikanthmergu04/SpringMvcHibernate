@@ -19,8 +19,9 @@ public class StudentServiceImpl implements StudentService {
 	public int addStudent(StudentDetails student) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("dao obj = "+dao);
-		
+		/*
+		 * System.out.println("dao obj = "+dao);
+		 */		
 		dao.addStudent(student);
 		
 		

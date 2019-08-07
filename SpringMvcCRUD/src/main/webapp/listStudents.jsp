@@ -4,7 +4,8 @@
 %>
 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
-   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+   <%@ include file="index.jsp" %>  
   <center>
 <h1>Students List</h1>  
 <form action = "updateOrDelete" method = "post">

@@ -29,12 +29,29 @@ public class StudentDaoImpl implements StudentDao {
 	public int addStudent(StudentDetails student) {
 		// TODO Auto-generated method stub
 		
-	//	System.out.println("sessionFactory obj = "+sessionFactory);
+	 // System.out.println("sessionFactory obj = "+sessionFactory);
 		Session session = null;
 		session = sessionFactory.openSession();
 		
 		
 		Transaction trnx = session.beginTransaction();
+		
+		/*
+		 * List<StudentDetails> list = new ArrayList();
+		 * 
+		 * // student.setBeneficiary(list);
+		 * 
+		 * StudentDetails stud = (StudentDetails) session.get(StudentDetails.class, 7);
+		 * 
+		 * 
+		 * StudentDetails stu = (StudentDetails) session.get(StudentDetails.class, 4);
+		 * StudentDetails stu1 = (StudentDetails) session.get(StudentDetails.class, 5);
+		 * StudentDetails stu2 = (StudentDetails) session.get(StudentDetails.class, 6);
+		 * 
+		 * //stud.getBeneficiary().add(stu); stud.getBeneficiary().add(stu1);
+		 * stud.getBeneficiary().add(stu2);
+		 */
+		
 		
 		session.save(student);
 		
